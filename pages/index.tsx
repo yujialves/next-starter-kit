@@ -13,7 +13,7 @@ const IndexPage = () => {
         </Link>
       </p>
       <Button variant="contained" className={classes.button}>
-        example
+        Test
       </Button>
     </Layout>
   );
