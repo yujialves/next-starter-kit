@@ -4,14 +4,16 @@ import { ThemeProvider as MaterialUIThemeProvider } from "@material-ui/core/styl
 import { StylesProvider } from "@material-ui/styles";
 import createMuiTheme, { Theme } from "@material-ui/core/styles/createMuiTheme";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import userReducer from "../store/user/user.reducer";
+import createSagaMiddleware from "redux-saga";
 
 const rootReducer = combineReducers({
   user: userReducer,
 });
-const store = createStore(rootReducer);
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   // Remove the server-side injected CSS.(https://material-ui.com/guides/server-rendering/)
