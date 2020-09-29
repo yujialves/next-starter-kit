@@ -8,6 +8,10 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 import userReducer from "../store/user/user.reducer";
 import createSagaMiddleware from "redux-saga";
+import Enzyme from "enzyme";
+import EnzymeAdapter from "enzyme-adapter-react-16";
+
+Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 const rootReducer = combineReducers({
   user: userReducer,
